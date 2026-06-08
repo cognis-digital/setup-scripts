@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: setup-scripts, labels: { app: setup-scripts } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: setup-scripts } }
+  template:
+    metadata: { labels: { app: setup-scripts } }
+    spec:
+      containers:
+        - name: setup-scripts
+          image: ghcr.io/cognis-digital/setup-scripts:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: setup-scripts }
+spec:
+  selector: { app: setup-scripts }
+  ports: [{ port: 80, targetPort: 8000 }]
