@@ -4,6 +4,55 @@
 
 A collection of small, focused Bash scripts that install and configure common developer and infrastructure tools. Every script is **safe to run repeatedly** — if a tool is already present (and the right version), the script detects it and skips reinstalling.
 
+## Quick start (guided)
+
+New here? Don't memorize anything. Run the guided wizard and **type a number**:
+
+```bash
+./setup.sh        # macOS / Linux / WSL / Git-Bash
+```
+
+```powershell
+.\setup.ps1       # Windows PowerShell
+```
+
+The wizard first asks how comfortable you are with the terminal (1–5) and then
+**adapts how much it explains** — beginners get *what / why / what-could-go-wrong*;
+experts get terse one-liners. You drive everything from a numbered menu:
+
+```
+1  Quick install (recommended starter bundle)
+2  Browse by category
+3  Pick individual tools
+4  Install everything
+5  Set up the local AI fleet (--ai mode)
+6  Configure (install method, install dir)
+7  Verify & health-check installed tools
+8  Help / glossary
+9  Change familiarity level
+0  Exit
+```
+
+Every action follows the same contract: **explain → show the EXACT command →
+confirm `[Y/n]` → run → report → back to the menu.** Nothing destructive runs
+without an explicit confirm. Add `--dry-run` to preview every command without
+executing it:
+
+```bash
+./setup.sh --dry-run
+```
+
+It's **pure Python standard library** — nothing to `pip install` first. This
+repo ships no catalog of its own, so the wizard automatically points at the
+canonical [cognis-arsenal](https://github.com/cognis-digital/cognis-arsenal)
+`MANIFEST.json` for the full tool list (override with `--manifest PATH` or
+`--manifest-url URL`; `--no-remote` keeps it offline). Even with no manifest at
+all, the fleet setup, configure, health-check and help screens still work.
+
+Prefer to run it directly? `python cognis_setup.py` does the same thing.
+
+---
+
 ## Design principles
 
 - **Idempotent** — re-running a script never corrupts state and is a near no-op when already installed.

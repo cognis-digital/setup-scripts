@@ -1,0 +1,3 @@
+# Python bytecode caches (the guided wizard is stdlib-only; these are build artifacts)
+__pycache__/
+*.py[cod]
