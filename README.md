@@ -4,6 +4,58 @@
 
 A collection of small, focused Bash scripts that install and configure common developer and infrastructure tools. Every script is **safe to run repeatedly** — if a tool is already present (and the right version), the script detects it and skips reinstalling.
 
+<!-- cognis:layman:start -->
+## What is this?
+
+setup-scripts is a collection of ready-to-use scripts that install common developer tools — things like Docker, Python, Node.js, Rust, and Kubernetes — on Ubuntu or Debian Linux with a single command. Each script is safe to run more than once: if a tool is already installed, the script detects it and skips reinstalling. It also ships a guided interactive wizard (`cognis_setup.py`) that walks you through picking and installing tools one by one, explaining each step before it does anything. It is aimed at developers, DevOps engineers, and anyone setting up a fresh server or workstation who wants a fast, reliable way to get their toolchain in place.
+<!-- cognis:layman:end -->
+
+<!-- cognis:domains:start -->
+## Domains
+
+**Primary domain:** Cloud & DevTools  ·  **JTF MERIDIAN division:** ATHENA-PRIME · COGNI-2
+
+**Topics:** `cognis` `devtools` `cloud` `developer-tools`
+
+Part of the **Cognis Neural Suite** — 300+ source-available tools organized across 12 domains under the JTF MERIDIAN command structure. See the [suite on GitHub](https://github.com/cognis-digital) and [jtf-meridian](https://github.com/cognis-digital/jtf-meridian) for how the pieces fit together.
+<!-- cognis:domains:end -->
+
+<!-- cognis:install:start -->
+## Install
+
+`setup-scripts` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/setup-scripts/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/setup-scripts/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/setup-scripts.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/setup-scripts.git"  # uv
+pip install "git+https://github.com/cognis-digital/setup-scripts.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/setup-scripts.git
+cd setup-scripts && pip install .
+```
+
+Then run:
+```sh
+python -m setup-scripts --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start (guided)
 
 New here? Don't memorize anything. Run the guided wizard and **type a number**:
@@ -139,6 +191,32 @@ flowchart LR
 ```
 
 **Explore the suite →** [🗂️ all tools](https://github.com/cognis-digital/cognis-neural-suite) · [⭐ awesome-cognis](https://github.com/cognis-digital/awesome-cognis) · [🔗 cognis-sources](https://github.com/cognis-digital/cognis-sources)
+
+<a name="verification"></a>
+## Verification
+
+
+
+Every push is verified end-to-end. Latest audit (2026-06-12):
+
+```text
+tests        : 0 passed, 0 failed, 0 errored
+compile      : all modules parse
+cli          : n/a
+package      : n/a
+```
+
+<details><summary>CLI surface (<code>--help</code>)</summary>
+
+```text
+(see --help)
+```
+</details>
+
+Full machine-readable results: [`AUDIT.md`](AUDIT.md) · regenerate with `python -m setup-scripts --help` + `pytest -q`.
+
+<div align="right"><a href="#top">↑ back to top</a></div>
+
 
 ## License
 
