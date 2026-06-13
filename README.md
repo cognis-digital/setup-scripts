@@ -10,6 +10,16 @@ A collection of small, focused Bash scripts that install and configure common de
 setup-scripts is a collection of ready-to-use scripts that install common developer tools — things like Docker, Python, Node.js, Rust, and Kubernetes — on Ubuntu or Debian Linux with a single command. Each script is safe to run more than once: if a tool is already installed, the script detects it and skips reinstalling. It also ships a guided interactive wizard (`cognis_setup.py`) that walks you through picking and installing tools one by one, explaining each step before it does anything. It is aimed at developers, DevOps engineers, and anyone setting up a fresh server or workstation who wants a fast, reliable way to get their toolchain in place.
 <!-- cognis:layman:end -->
 
+<!-- cognis:domains:start -->
+## Domains
+
+**Primary domain:** Cloud & DevTools  ·  **JTF MERIDIAN division:** ATHENA-PRIME · COGNI-2
+
+**Topics:** `cognis` `devtools` `cloud` `developer-tools`
+
+Part of the **Cognis Neural Suite** — 300+ source-available tools organized across 12 domains under the JTF MERIDIAN command structure. See the [suite on GitHub](https://github.com/cognis-digital) and [jtf-meridian](https://github.com/cognis-digital/jtf-meridian) for how the pieces fit together.
+<!-- cognis:domains:end -->
+
 <!-- cognis:install:start -->
 ## Install
 
