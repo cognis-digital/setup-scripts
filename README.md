@@ -4,6 +4,46 @@
 
 A collection of small, focused Bash scripts that install and configure common developer and infrastructure tools. Every script is **safe to run repeatedly** — if a tool is already present (and the right version), the script detects it and skips reinstalling.
 
+
+## Usage — step by step
+
+A collection of idempotent, stdlib-Python-driven setup scripts for Ubuntu/Debian
+dev & infra tools. Start from the guided wizard, or call the individual scripts.
+
+1. **Launch the guided wizard** (no dependencies to install first) and type a
+   menu number; add `--dry-run` to preview every command without executing:
+   ```bash
+   ./setup.sh            # macOS / Linux / WSL / Git-Bash  (or: python cognis_setup.py)
+   ./setup.sh --dry-run
+   # Windows:  .\setup.ps1
+   ```
+2. **Or install a tool directly** via the one-liner installer, which dispatches
+   to a named script in `scripts/`:
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/cognis-digital/cognis-setup-scripts/main/install.sh | bash -s -- docker
+   # or from a clone:
+   git clone https://github.com/cognis-digital/cognis-setup-scripts.git
+   cd cognis-setup-scripts && ./install.sh docker node rust
+   ```
+3. **Pin versions** by overriding the `*_VERSION` env vars each script reads:
+   ```bash
+   GO_VERSION=1.22.4 ./scripts/go.sh
+   TERRAFORM_VERSION=1.8.5 ./scripts/terraform.sh
+   ```
+4. **Verify the result** with the per-tool check from the script table (the
+   wizard's "Verify & health-check" menu item does this for you):
+   ```bash
+   docker --version
+   terraform version
+   ```
+5. **Use it non-interactively in CI / Dockerfiles / cloud-init.** The scripts use
+   strict Bash (`set -euo pipefail`) and are safe to re-run (near no-op when
+   already installed); the wizard can point at a different catalog with
+   `--manifest PATH`, `--manifest-url URL`, or stay offline with `--no-remote`:
+   ```bash
+   ./bootstrap-dev.sh    # install a sensible default developer stack in one shot
+   ```
+
 ## Quick start (guided)
 
 New here? Don't memorize anything. Run the guided wizard and **type a number**:
